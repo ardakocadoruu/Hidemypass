@@ -14,8 +14,8 @@ WORKDIR /app
 # Copy package files
 COPY package.json package-lock.json* ./
 
-# Install dependencies with clean install
-RUN npm ci --only=production --ignore-scripts
+# Install dependencies with clean install (legacy-peer-deps for Light Protocol compatibility)
+RUN npm ci --legacy-peer-deps --ignore-scripts
 
 # ============================================
 # Stage 2: Builder
