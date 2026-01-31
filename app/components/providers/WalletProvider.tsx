@@ -16,8 +16,6 @@ import {
   PhantomWalletAdapter,
   SolflareWalletAdapter,
 } from '@solana/wallet-adapter-wallets';
-import { WalletAdapterNetwork } from '@solana/wallet-adapter-base';
-import { clusterApiUrl } from '@solana/web3.js';
 
 // Import wallet adapter CSS
 import '@solana/wallet-adapter-react-ui/styles.css';
@@ -27,11 +25,24 @@ interface WalletProviderProps {
 }
 
 export const WalletProvider: FC<WalletProviderProps> = ({ children }) => {
-  // Dynamic network based on env variable (supports devnet and mainnet-beta)
-  const network = process.env.NEXT_PUBLIC_SOLANA_NETWORK === 'mainnet-beta'
-    ? 'mainnet-beta' as WalletAdapterNetwork
-    : 'devnet' as WalletAdapterNetwork;
-  const endpoint = useMemo(() => clusterApiUrl(network), [network]);
+  // Use Helius RPC for both devnet and mainnet (avoids rate limits from public Solana RPC)
+  const endpoint = useMemo(() => {
+    const network = process.env.NEXT_PUBLIC_SOLANA_NETWORK || 'devnet';
+    const heliusKey = process.env.NEXT_PUBLIC_HELIUS_API_KEY;
+
+    if (heliusKey) {
+      // Use Helius RPC (recommended - no rate limits)
+      if (network === 'mainnet-beta') {
+        return `https://mainnet.helius-rpc.com/?api-key=${heliusKey}`;
+      }
+      return `https://devnet.helius-rpc.com/?api-key=${heliusKey}`;
+    }
+
+    // Fallback to public RPC (has rate limits)
+    return network === 'mainnet-beta'
+      ? 'https://api.mainnet-beta.solana.com'
+      : 'https://api.devnet.solana.com';
+  }, []);
 
   // Initialize wallets - SIMPLE, no network param
   const wallets = useMemo(
