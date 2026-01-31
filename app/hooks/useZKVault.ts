@@ -331,7 +331,8 @@ export function useZKVault() {
         });
 
         logger.log('✅ Transaction sent! Signature:', signature);
-        logger.log(`🌐 View on Solscan: https://solscan.io/tx/${signature}?cluster=devnet`);
+        const solscanCluster = process.env.NEXT_PUBLIC_SOLANA_NETWORK === 'mainnet-beta' ? '' : '?cluster=devnet';
+        logger.log(`🌐 View on Solscan: https://solscan.io/tx/${signature}${solscanCluster}`);
 
         // NO localStorage - Pure decentralized storage (Blockchain + IPFS only)
 

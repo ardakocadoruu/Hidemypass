@@ -20,8 +20,16 @@ import {
 } from '@lightprotocol/stateless.js';
 import { PublicKey, ComputeBudgetProgram, TransactionInstruction } from '@solana/web3.js';
 
-// Helius RPC with ZK Compression support
-const HELIUS_RPC = `https://devnet.helius-rpc.com/?api-key=${process.env.NEXT_PUBLIC_HELIUS_API_KEY}`;
+// Helius RPC with ZK Compression support (dynamic network)
+const getHeliusRPC = () => {
+    const network = process.env.NEXT_PUBLIC_SOLANA_NETWORK || 'devnet';
+    const apiKey = process.env.NEXT_PUBLIC_HELIUS_API_KEY;
+    if (network === 'mainnet-beta') {
+        return `https://mainnet.helius-rpc.com/?api-key=${apiKey}`;
+    }
+    return `https://devnet.helius-rpc.com/?api-key=${apiKey}`;
+};
+const HELIUS_RPC = getHeliusRPC();
 
 export async function POST(request: NextRequest) {
     try {

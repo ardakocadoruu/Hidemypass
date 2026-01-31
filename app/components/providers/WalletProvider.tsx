@@ -27,8 +27,11 @@ interface WalletProviderProps {
 }
 
 export const WalletProvider: FC<WalletProviderProps> = ({ children }) => {
-  // Use devnet
-  const endpoint = useMemo(() => clusterApiUrl('devnet'), []);
+  // Dynamic network based on env variable (supports devnet and mainnet-beta)
+  const network = process.env.NEXT_PUBLIC_SOLANA_NETWORK === 'mainnet-beta'
+    ? 'mainnet-beta' as WalletAdapterNetwork
+    : 'devnet' as WalletAdapterNetwork;
+  const endpoint = useMemo(() => clusterApiUrl(network), [network]);
 
   // Initialize wallets - SIMPLE, no network param
   const wallets = useMemo(
