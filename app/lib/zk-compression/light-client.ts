@@ -13,7 +13,7 @@ import { Connection, PublicKey } from '@solana/web3.js';
 /**
  * Network configuration for Light Protocol
  */
-export type LightNetwork = 'devnet' | 'mainnet';
+export type LightNetwork = 'devnet' | 'mainnet-beta';
 
 interface LightClientConfig {
   network: LightNetwork;
@@ -78,7 +78,7 @@ export class LightClient {
   private getRpcUrl(network: LightNetwork, apiKey?: string): string {
     const key = apiKey || process.env.NEXT_PUBLIC_HELIUS_API_KEY || 'your-api-key';
 
-    if (network === 'mainnet') {
+    if (network === 'mainnet-beta') {
       return `https://mainnet.helius-rpc.com/?api-key=${key}`;
     } else {
       return `https://devnet.helius-rpc.com/?api-key=${key}`;
@@ -117,7 +117,7 @@ export function getConnectionFromLightRpc(rpc: Rpc): Connection {
   const network = process.env.NEXT_PUBLIC_SOLANA_NETWORK || 'devnet';
   const heliusKey = process.env.NEXT_PUBLIC_HELIUS_API_KEY || 'your-api-key';
 
-  const endpoint = network === 'mainnet'
+  const endpoint = network === 'mainnet-beta'
     ? `https://mainnet.helius-rpc.com/?api-key=${heliusKey}`
     : `https://devnet.helius-rpc.com/?api-key=${heliusKey}`;
 
