@@ -1,0 +1,12 @@
+# robots.txt for HideMyPass
+User-agent: *
+Allow: /
+Allow: /docs
+Allow: /vault
+Disallow: /api/
+
+# Sitemap
+Sitemap: https://hidemypass.xyz/sitemap.xml
+
+# Crawl-delay (optional, helps prevent server overload)
+Crawl-delay: 1
