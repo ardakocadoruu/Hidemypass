@@ -57,34 +57,34 @@ export function Navbar() {
                       <stop offset="100%" stopColor="#06b6d4" />
                     </linearGradient>
                     <filter id="glow">
-                      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+                      <feGaussianBlur stdDeviation="2" result="coloredBlur" />
                       <feMerge>
-                        <feMergeNode in="coloredBlur"/>
-                        <feMergeNode in="SourceGraphic"/>
+                        <feMergeNode in="coloredBlur" />
+                        <feMergeNode in="SourceGraphic" />
                       </feMerge>
                     </filter>
                   </defs>
 
                   {/* Hexagon shape */}
                   <path d="M24 4 L38 13 L38 31 L24 40 L10 31 L10 13 Z"
-                        fill="url(#logo-gradient)"
-                        filter="url(#glow)"
-                        opacity="0.9"/>
+                    fill="url(#logo-gradient)"
+                    filter="url(#glow)"
+                    opacity="0.9" />
 
                   {/* Lock icon - simplified modern design */}
                   <g transform="translate(24, 24)">
                     {/* Lock body */}
-                    <rect x="-6" y="0" width="12" height="10" rx="2" fill="white" opacity="0.95"/>
+                    <rect x="-6" y="0" width="12" height="10" rx="2" fill="white" opacity="0.95" />
                     {/* Lock shackle */}
                     <path d="M -4,-6 Q -4,-10 0,-10 Q 4,-10 4,-6"
-                          stroke="white"
-                          strokeWidth="2.5"
-                          fill="none"
-                          strokeLinecap="round"
-                          opacity="0.95"/>
+                      stroke="white"
+                      strokeWidth="2.5"
+                      fill="none"
+                      strokeLinecap="round"
+                      opacity="0.95" />
                     {/* Keyhole */}
-                    <circle cx="0" cy="4" r="1.5" fill="url(#logo-gradient)"/>
-                    <rect x="-0.5" y="5" width="1" height="3" fill="url(#logo-gradient)"/>
+                    <circle cx="0" cy="4" r="1.5" fill="url(#logo-gradient)" />
+                    <rect x="-0.5" y="5" width="1" height="3" fill="url(#logo-gradient)" />
                   </g>
                 </svg>
               </div>
@@ -117,7 +117,7 @@ export function Navbar() {
               })}
 
               <a
-                href="https://github.com/Lightprotocol/light-protocol"
+                href="https://github.com/ardakocadoruu/Hidemypass"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-white transition-colors p-2 hover:bg-white/5 rounded-lg"
@@ -172,7 +172,7 @@ export function Navbar() {
             })}
 
             <a
-              href="https://github.com/Lightprotocol/light-protocol"
+              href="https://github.com/ardakocadoruu/Hidemypass"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-400 hover:bg-white/5 hover:text-white transition-all"
