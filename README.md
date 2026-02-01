@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🔐 HideMyPass
+# 🔐 HideMyPass.xyz
 
 ### **Zero-Knowledge Password Manager on Solana**
 
