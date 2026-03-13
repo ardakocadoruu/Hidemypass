@@ -8,6 +8,7 @@ import { Navbar } from './components/layout/Navbar';
 import { WalletSelectionModal } from './components/wallet/WalletSelectionModal';
 import { ScrollReveal } from './components/animations/ScrollReveal';
 import { V3SecuritySection } from './components/sections/V3SecuritySection';
+import ShaderBackground from './components/ui/shader-background';
 import {
   Lock,
   Shield,
@@ -42,6 +43,7 @@ export default function Home() {
 
         {/* Hero Section - Ultra Clean */}
         <section className="relative min-h-screen flex items-center justify-center px-4">
+          <ShaderBackground />
           {/* Subtle gradient overlay */}
           <div className="absolute inset-0 bg-gradient-to-b from-purple-900/10 via-transparent to-transparent pointer-events-none" />
 
